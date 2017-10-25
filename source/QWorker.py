@@ -30,8 +30,8 @@ class Worker(QRunnable):
         jobs_done = 0
         time.sleep(1)
         if self.mode:
-            Core.wstars = re.compile("[☆](?=\s)?.+(?=\W)?")
-            Core.bstars = re.compile("[★](?=\s)?.+(?=\W)?")
+            Core.wstars = re.compile("[☆]\s?[ \w]+")
+            Core.bstars = re.compile("[★]\s?[ \w]+")
         else:
             Core.wstars = re.compile("[☆]\s?\w+")
             Core.bstars = re.compile("[★]\s?\w+")
@@ -87,7 +87,6 @@ class Worker2(QRunnable):
 
 
 class Worker3(QRunnable):
-
 
     def __init__(self):
         super().__init__()

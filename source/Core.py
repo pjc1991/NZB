@@ -102,9 +102,9 @@ def working(soup):
 
     name = [i_n.text.strip() for i_n in soup.find_all("span", class_=name_soup)]
     print(name)
-    tmln = [i_t.text for i_t in soup.select("span.reg_date")]
+    tmln = [i_t.text.strip() for i_t in soup.select("span.reg_date")]
     print(tmln)
-    mess = [i_m.text for i_m in soup.select("div.message")]
+    mess = [i_m.text.strip() for i_m in soup.select("div.message")]
     print(mess)
 
     data = list(zip(name, tmln, mess))
@@ -134,12 +134,13 @@ def nzb(stars, dat, max_s):   # 이름 시간 추천으로 이뤄진 리스트(l
                         # print("별 삭제 완료.")    # test
 
             dfind = " ".join(stars.findall(dstar))
-            dfind = re.sub('(?P<star>[★☆]) ', "\g<star>", dfind)   # 공백 제거
+            dfind = re.sub('(?P<star>[★☆]) ', "\g<star>", dfind)
+            dfind = re.sub('\s+', " ", dfind)  # 공백이 두개 이상인 것은 하나로.
             stat_dict[dname] = dfind  # 추천 여부를 딕셔너리에 등록한다.
             # print("딕셔너리를 확인해보세요! \n%s" % stat_dict)
             line.append("%s %s %s" % (dname, dtime, dfind + "\n"))
         # 문자열을 리스트에 등록한다.
-        stat = {}  # (이름 : 점추천 갯수, [점추전 행사자들])이뤄진 리스트.
+        stat = {}  # (이름 : [점추전 행사자들])
 
     print("여기가 문제입니다.")
     for i in list(stat_dict.keys()):
@@ -152,7 +153,7 @@ def nzb(stars, dat, max_s):   # 이름 시간 추천으로 이뤄진 리스트(l
     print("요기가 문제입니다.")
 
     line.append("\n")
-    for d in list(stat.keys()):
+    for d in sorted(list(stat.keys()), key=lambda sus: len(stat[sus]), reverse=True):
         line.append("%s %s %d표 (%s)\n" % (d, "/" * len(stat[d]), len(stat[d]), ", ".join(stat[d])))
 
     return line
