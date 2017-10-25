@@ -7,6 +7,7 @@ import os
 import QWorker
 
 
+
 def trap_exc_during_debug(*args):
     print(args)
 

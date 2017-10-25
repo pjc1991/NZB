@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import time
 import sys
 import os
+import atexit
 
 # app.processEvents()
 # import sys
@@ -14,6 +15,10 @@ import os
 
 # sys.excepthook = trap_exc_during_debug
 
+def selenium_killer():
+    driver.quit()
+
+atexit.register(selenium_killer)
 
 driver = None
 
@@ -55,7 +60,7 @@ def on_drv():
 
 def off_drv():
     global driver
-    driver.close()
+    driver.quit()
 
 
 def get_vil_list(address):

@@ -88,6 +88,7 @@ class Worker2(QRunnable):
 
 class Worker3(QRunnable):
 
+
     def __init__(self):
         super().__init__()
         self.signals = WorkerSignals()

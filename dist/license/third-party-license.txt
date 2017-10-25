@@ -1,0 +1,20 @@
+이 문서에는 NZB에 포함되어있는 제 3 프로그램과, 그 라이센스 정보가 담겨있습니다.
+
+제 3 프로그램들은 사용자에게 추가적인 제약을 부과할 수 있으며, NZB와 제 3 프로그램의
+제약조건을 만족시키는 것은 것은 전적으로 사용자의 책임 하에 있습니다.
+
+BeautifulSoup 4
+License : MIT License.
+https://www.crummy.com/software/BeautifulSoup/
+
+Selenium
+License : Apache 2.0 License.
+http://www.seleniumhq.org/about/license.jsp
+
+PyQt5
+License: GPL version 3.0
+http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license
+
+PhantomJS
+License : BSD 3-clause "New" or "Revised" License
+https://github.com/ariya/phantomjs/blob/master/LICENSE.BSD
