@@ -2,17 +2,11 @@
 
 block_cipher = None
 
-added_data = [
-                ('NZB.ui', '.'),
-                ('Init.ui', '.'),
-                ('phantomjs.exe', '.')
-                ]
-
 
 a = Analysis(['MainUI2.py'],
-             pathex=['C:\\Users\\whdek\\PycharmProjects\\NZB2'],
+             pathex=['C:\\Users\\whdek\\PycharmProjects\\NZB2\\source'],
              binaries=[],
-             datas=added_data,
+             datas=[],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],

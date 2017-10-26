@@ -15,18 +15,20 @@ import atexit
 
 # sys.excepthook = trap_exc_during_debug
 
+
 def selenium_killer():
     driver.quit()
+
 
 atexit.register(selenium_killer)
 
 driver = None
 
 
-def res_path(rel_path):
-    if hasattr(sys, '_MEIPASS'):
-        return os.path.join(sys._MEIPASS, rel_path)
-    return os.path.join(os.path.abspath("."), rel_path)
+# def res_path(rel_path):
+    # if hasattr(sys, '_MEIPASS'):
+        # return os.path.join(sys._MEIPASS, rel_path)
+    # return os.path.join(os.path.abspath("."), rel_path)
 
 
 def wolf(raw):
@@ -55,7 +57,7 @@ def textextract(text):
 
 def on_drv():
     global driver
-    driver = webdriver.PhantomJS(res_path('./phantomjs.exe'))
+    driver = webdriver.PhantomJS()
 
 
 def off_drv():

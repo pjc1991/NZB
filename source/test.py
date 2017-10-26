@@ -1,5 +1,9 @@
-import math
-import time
+from selenium import webdriver
+
+driver = webdriver.PhantomJS()
+driver.get("http://werewolf.co.kr")
+html = driver.page_source
+print(html)
 
 x = 1
 

@@ -3,35 +3,35 @@ import random
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import uic
+from PyQt5 import QtGui
 import os
 import QWorker
-
 
 
 def trap_exc_during_debug(*args):
     print(args)
 
 
-def res_path(rel_path):
-    if hasattr(sys, '_MEIPASS'):
-        return os.path.join(sys._MEIPASS, rel_path)
-    return os.path.join(os.path.abspath("."), rel_path)
+# def res_path(rel_path):                                    # for 1-file binary input
+    # if hasattr(sys, '_MEIPASS'):                           #
+        # return os.path.join(sys._MEIPASS, rel_path)        #
+    # return os.path.join(os.path.abspath("."), rel_path)    #
 
 
 # sys.excepthook = trap_exc_during_debug
-form_class = uic.loadUiType(res_path("NZB.ui"))[0]
-form_class2 = uic.loadUiType(res_path("Init.ui"))[0]
+form_class = uic.loadUiType("NZB.ui")[0]
+form_class2 = uic.loadUiType("Init.ui")[0]
 
-jokes = ["닌자 좀비 블러드",
-         "NZB is an XML-based file format for retrieving posts from NNTP (Usenet) servers.",
-         "수정된 검색어에 대한 결과: 임재범",
-         "ㅝㅠ 으로 검색하시겠습니까?",
-         "NZB 버튼은 제발 한번만 불러주세요.",
-         "님 점박",
+jokes = [
+    "닌자 좀비 블러드",
+    "NZB is an XML-based file format for retrieving posts from NNTP (Usenet) servers.",
+    "수정된 검색어에 대한 결과: 임재범",
+    "ㅝㅠ 으로 검색하시겠습니까?",
+    "NZB 버튼은 제발 한번만 불러주세요.",
+    "님 점박",
+]
 
-         ]
-
-joke  = random.choice(jokes)
+joke = random.choice(jokes)
 
 
 class MyWindow(QMainWindow, form_class):
@@ -39,6 +39,7 @@ class MyWindow(QMainWindow, form_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon('starrynight.ico'))
         self.pushButton.clicked.connect(self.btn_1)
         self.label_nzb.setText(joke)
         self.threadpool = QThreadPool()
@@ -76,6 +77,7 @@ class Init(QFrame, form_class2):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon('starrynight.ico'))
         self.btn_self.clicked.connect(self.open_main)
         self.btn_go.clicked.connect(self.auto_work)
         self.main_window = None
